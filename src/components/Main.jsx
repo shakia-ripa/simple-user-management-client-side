@@ -1,9 +1,9 @@
-
+import {Outlet} from 'react-router-dom';
 
 const Main = () => {
     return (
         <div>
-            hey this is main
+            <Outlet></Outlet>
         </div>
     );
 };
