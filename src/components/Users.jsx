@@ -63,7 +63,6 @@ const Users = () => {
                     </thead>
                     {
                         users?.map((user, idx) => <tbody key={idx}>
-                            {/* row 1 */}
                             <tr>
                                 <th>{idx + 1}</th>
                                 <td>{user.name}</td>
