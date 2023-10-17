@@ -130,7 +130,7 @@ const AddUser = () => {
                     <label htmlFor="inactive">Inactive</label>
                 </div>
                 <div className="form-control mt-6">
-                    <button className="btn btn-success">Save</button>
+                    <button className="btn btn-success text-xl">Save</button>
                 </div>
             </form>
         </div>

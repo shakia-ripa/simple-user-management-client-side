@@ -7,12 +7,12 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Main from './components/Main.jsx';
-import SignIn from './components/SignIn';
-import SignUp from './components/SignUp';
+
 import Users from './components/Users';
 import AddUser from './components/AddUser';
 import UpdateUser from './components/UpdateUser';
 import AuthProvider from './providers/AuthProvider';
+import PrivateRoute from './routes/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -20,24 +20,18 @@ const router = createBrowserRouter([
     element: <Main></Main>,
     children: [
       {
-        path: '/signin',
-        element: <SignIn></SignIn>
-      },
-      {
-        path: '/signup',
-        element: <SignUp></SignUp>
-      },
-      {
         path: '/users',
-        element: <Users></Users>
+        element: <PrivateRoute><Users></Users></PrivateRoute>,
+        loader: () => fetch('http://localhost:5000/users')
       },
       {
         path: '/adduser',
         element: <AddUser></AddUser>
       },
       {
-        path: '/updateuser',
-        element: <UpdateUser></UpdateUser>
+        path: '/updateuser/:id',
+        element: <UpdateUser></UpdateUser>,
+        loader: ({ params }) => fetch(`http://localhost:5000/users/${params.id}`)
       }
     ]
   },

@@ -8,12 +8,14 @@ const auth = getAuth(app);
 export const AuthContext = createContext(null)
 
 const AuthProvider = ({ children }) => {
+    const admin = true;
 
     const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
 
     const userInfo = {
+        admin,
         createUser
     }
 
